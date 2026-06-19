@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Even or Odd Checker</title>
+  
+  <style>
+    /* Reset margins and center the card perfectly on the screen */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* Style the container box (The Card) */
+    .checker-card {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 320px;
+    }
+
+    h3 {
+      color: #333333;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* Style the input field */
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    /* Highlight input field when clicked */
+    input[type="number"]:focus {
+      border-color: #4caf50;
+      outline: none;
+    }
+
+    /* Style the action button */
+    button {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    /* Change button color on hover */
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Style the output result text */
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+      min-height: 24px; /* Prevents layout shifting when text appears */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checker-card">
+    <h3>Even or Odd Checker</h3>
+    <input type="number" id="num" placeholder="Enter a number">
+    <button onclick="check()">Check</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function check() {
+      let rawValue = document.getElementById("num").value;
+      
+      if (rawValue === "") {
+        document.getElementById("result").style.color = "#e74c3c"; // Text turns red for error
+        document.getElementById("result").innerText = "Please enter a number.";
+        return;
+      }
+
+      let n = Number(rawValue);
+
+      // Dynamically change text color based on result
+      let resultElement = document.getElementById("result");
+      if (n % 2 === 0) {
+        resultElement.style.color = "#2ecc71"; // Green for Even
+        resultElement.innerText = n + " is Even";
+      } else {
+        resultElement.style.color = "#3498db"; // Blue for Odd
+        resultElement.innerText = n + " is Odd";
+      }
+    }
+  </script>
+</body>
+</html>
